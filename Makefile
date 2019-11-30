@@ -35,4 +35,16 @@ log-db:
 	docker-compose logs db
 
 collectstatic:
-	docker exec dz01 /bin/sh -c "python manage.py collectstatic --noinput"  
+	docker exec dz01 /bin/sh -c "python manage.py collectstatic --noinput"
+
+migrate:
+	docker-compose exec web python manage.py migrate
+
+migrations:
+	docker-compose exec web python manage.py makemigrations
+
+server:
+	docker-compose exec web python manage.py runserver
+
+user:
+	docker-compose exec web python manage.py createsuperuser
